@@ -44,15 +44,13 @@ def wait(chat_id, question):
 def choose(author_id, message):    
     bot.send_message(author_id, 'Время вышло')
 
-def main():
-    bot.send_message(TG_CHAT_ID, 'Привет!')
-    bot.reply_on_message(wait)
-    bot.reply_on_message(notify_progress)
-    bot.run_bot()
 
 if __name__ == '__main__':
     load_dotenv()
-    TG_TOKEN = os.environ['TELEGRAM_TOKEN']
-    TG_CHAT_ID = os.environ['TG_ID'] 
-    bot = ptbot.Bot(TG_TOKEN)
-    main()
+    tg_token = os.environ['TELEGRAM_TOKEN']
+    tg_chat_id = os.environ['TG_ID'] 
+    bot = ptbot.Bot(tg_token)
+    bot.send_message(tg_chat_id, 'Привет!')
+    bot.reply_on_message(wait)
+    bot.reply_on_message(notify_progress)
+    bot.run_bot()
